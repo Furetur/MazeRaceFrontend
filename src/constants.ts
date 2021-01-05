@@ -1,6 +1,6 @@
 import {DirectionType} from "./types";
 
-const WEBSOCKET_HOST = 'ws://localhost:8080/'
+const WEBSOCKET_HOST = 'ws://maze-race-kotlin.herokuapp.com/'
 
 export const LOBBY_WEBSOCKET_ENDPOINT = `${WEBSOCKET_HOST}ws/lobby`
 
