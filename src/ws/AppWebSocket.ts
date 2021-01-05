@@ -1,5 +1,5 @@
-import {makeReadyUpdate} from "./webSocketActions";
-import {RoomId} from "../types";
+import {makePlayerInput, makeReadyUpdate} from "./webSocketActions";
+import {DirectionType, RoomId} from "../types";
 import { LOBBY_WEBSOCKET_ENDPOINT, ROOM_ID_QUERY_PARAM_KEY} from "../constants";
 import { WebSocketEvent} from "./webSocketEvents";
 import {PayloadAction} from "@reduxjs/toolkit";
@@ -50,6 +50,10 @@ class AppWebSocket {
 
     sendUnready() {
         this.send(makeReadyUpdate(false))
+    }
+
+    move(direction: DirectionType) {
+        this.send(makePlayerInput(direction))
     }
 }
 
