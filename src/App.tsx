@@ -3,10 +3,14 @@ import JoinLobby from "./components/JoinLobby/JoinLobby";
 import Lobby from "./components/Lobby/Lobby";
 import Game from "./components/Game/Game";
 
+import styles from './App.module.css'
+
 function App() {
     return (
         <div className="App">
-            <JoinLobby/>
+            <div className={styles.joinLobbyContainer}>
+                <JoinLobby/>
+            </div>
             <Lobby/>
             <Game/>
         </div>

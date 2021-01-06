@@ -1,16 +1,13 @@
-import {useState} from "react";
-import {gameWebSocket} from "../../ws/AppWebSocket";
+import CreateLobby from "./CreateLobby";
+import JoinLobbyById from "./JoinLobbyById";
+import {Card, Divider} from "antd";
 
 export default function JoinLobby() {
-    const [roomId, setRoomId] = useState('')
-
-    const joinLobby = () => {
-        const parsedRoomId = parseInt(roomId)
-        gameWebSocket.connect(Number.isNaN(parsedRoomId) ? null : parsedRoomId)
-    }
-
-    return (<div>
-        <input type="text" value={roomId} onChange={event => setRoomId(event.target.value)}/>
-        <button onClick={joinLobby}>Join Lobby</button>
-    </div>)
+    return (
+        <Card>
+            <CreateLobby />
+            <Divider plain>or</Divider>
+            <JoinLobbyById />
+        </Card>
+    )
 }
