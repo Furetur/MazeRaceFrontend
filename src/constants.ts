@@ -1,8 +1,6 @@
 import {DirectionType} from "./types";
 
-const WEBSOCKET_HOST = 'wss://maze-race-kotlin.herokuapp.com/'
-
-export const LOBBY_WEBSOCKET_ENDPOINT = `${WEBSOCKET_HOST}ws/lobby`
+export const LOBBY_WEBSOCKET_ENDPOINT = process.env.REACT_APP_LOBBY_WS_ENDPOINT as string
 
 export const ROOM_ID_QUERY_PARAM_KEY = 'id'
 
