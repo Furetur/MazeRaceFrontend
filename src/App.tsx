@@ -14,7 +14,9 @@ function App() {
             <div className={styles.lobbyContainer}>
                 <Lobby/>
             </div>
-            <Game/>
+            <div className={styles.gameContainer}>
+                <Game/>
+            </div>
         </div>
     );
 }

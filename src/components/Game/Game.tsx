@@ -1,13 +1,33 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useSelector} from "react-redux";
 import {selectMazeConfig} from "../../game.slice";
-import Cell from "./Cell";
+import Cell from "./Cell/Cell";
 import {DirectionType} from "../../types";
 import {gameWebSocket} from "../../ws/AppWebSocket";
 import {Direction} from "../../constants";
+import Controls from "./Controls/Controls";
+import {Card} from "antd";
+
+import styles from './Game.module.css'
 
 export default function Game() {
     const mazeConfig = useSelector(selectMazeConfig)
+
+    useEffect(() => {
+        const listener = (e: KeyboardEvent) => {
+            if (e.key === 'ArrowUp') {
+                gameWebSocket.move(Direction.UP)
+            } else if (e.key === 'ArrowRight') {
+                gameWebSocket.move(Direction.RIGHT)
+            } else if (e.key === 'ArrowDown') {
+                gameWebSocket.move(Direction.DOWN)
+            } else if (e.key === 'ArrowLeft') {
+                gameWebSocket.move(Direction.LEFT)
+            }
+        }
+        document.addEventListener('keydown', listener)
+        return () => document.removeEventListener('keydown', listener)
+    }, [])
 
     const gridCss = mazeConfig != null ? {
         display: 'grid',
@@ -23,14 +43,7 @@ export default function Game() {
     }
 
     return mazeConfig != null && gridCss != null ? (
-        <div>
-            <h1>Maze</h1>
-            <div>
-                <button onClick={input(Direction.UP)}>Up</button>
-                <button onClick={input(Direction.RIGHT)}>Right</button>
-                <button onClick={input(Direction.DOWN)}>Down</button>
-                <button onClick={input(Direction.LEFT)}>Left</button>
-            </div>
+        <Card className={styles.Game}>
             <div style={gridCss}>
                 {mazeConfig.map.map((row, y) => (
                     <React.Fragment key={y}>
@@ -40,6 +53,9 @@ export default function Game() {
                     </React.Fragment>
                 ))}
             </div>
-        </div>
+            <div className={styles.controlsContainer}>
+                <Controls input={input} />
+            </div>
+        </Card>
     ) : null
 }

@@ -1,11 +1,11 @@
 import classNames from 'classnames'
-import {Position} from "../../types";
+import {Position} from "../../../types";
 import {useSelector} from "react-redux";
-import {selectMazeConfig, selectMe, selectPlayersOnPosition} from "../../game.slice";
+import {selectMazeConfig, selectMe, selectPlayersOnPosition} from "../../../game.slice";
 
 // @ts-ignore
 import styles from './Cell.module.css';
-import {RootState} from "../../store";
+import {RootState} from "../../../store";
 
 type Props = {
     position: Position

@@ -1,0 +1,10 @@
+.Game {
+    width: fit-content;
+}
+
+.controlsContainer {
+    margin-top: 16px;
+
+    display: flex;
+    justify-content: center;
+}
