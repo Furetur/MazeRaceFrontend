@@ -44,6 +44,7 @@ export default function Cell({position}: Props) {
             [styles.me]: cellStatus === 'me',
             [styles.both]: cellStatus === 'both',
             [styles.wall]: cell === 'WALL',
+            [styles.finish]: position.x === mazeConfig?.finish.x && position.y === mazeConfig?.finish.y
         }
     )
 
