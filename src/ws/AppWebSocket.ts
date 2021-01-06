@@ -86,12 +86,8 @@ class AppWebSocket {
         this.websocket.send(JSON.stringify(message))
     }
 
-    sendReady() {
-        this.send(makeReadyUpdate(true))
-    }
-
-    sendUnready() {
-        this.send(makeReadyUpdate(false))
+    sendReady(isReady: boolean) {
+        this.send(makeReadyUpdate(isReady))
     }
 
     move(direction: DirectionType) {

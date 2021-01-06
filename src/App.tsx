@@ -11,7 +11,9 @@ function App() {
             <div className={styles.joinLobbyContainer}>
                 <JoinLobby/>
             </div>
-            <Lobby/>
+            <div className={styles.lobbyContainer}>
+                <Lobby/>
+            </div>
             <Game/>
         </div>
     );
